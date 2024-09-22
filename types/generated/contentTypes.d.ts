@@ -368,6 +368,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     singularName: 'category';
     pluralName: 'categories';
     displayName: 'Category';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -379,6 +380,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::new.new'
     >;
+    slug: Attribute.UID<'api::category.category', 'name'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -411,7 +413,6 @@ export interface ApiNewNew extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required & Attribute.Unique;
     description: Attribute.String & Attribute.Required;
-    content: Attribute.Text & Attribute.Required;
     hero_image: Attribute.Media<'images'> & Attribute.Required;
     slug: Attribute.UID<'api::new.new', 'title'> & Attribute.Required;
     category: Attribute.Relation<
@@ -419,6 +420,7 @@ export interface ApiNewNew extends Schema.CollectionType {
       'manyToOne',
       'api::category.category'
     >;
+    content: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

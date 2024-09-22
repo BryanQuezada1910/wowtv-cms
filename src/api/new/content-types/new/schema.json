@@ -21,10 +21,6 @@
       "type": "string",
       "required": true
     },
-    "content": {
-      "type": "text",
-      "required": true
-    },
     "hero_image": {
       "type": "media",
       "multiple": false,
@@ -43,6 +39,10 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "news"
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
     }
   }
 }
